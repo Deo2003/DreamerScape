@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bnc4xssud5nxw"]
+[gd_scene load_steps=17 format=3 uid="uid://bnc4xssud5nxw"]
 
 [ext_resource type="Script" path="res://Scenes/TitleScreen.gd" id="1_ym85r"]
 [ext_resource type="Texture2D" uid="uid://bkdvt0ibprwpm" path="res://Assets/TitleScreen/1x/Asset 7.png" id="2_olvht"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://v05cqvtdj46n" path="res://Assets/TitleScreen/1x/Asset 2.png" id="8_l3cb1"]
 [ext_resource type="Texture2D" uid="uid://denwxniogd3ru" path="res://Assets/TitleScreen/1x/Asset 3.png" id="9_o3wf2"]
 [ext_resource type="Texture2D" uid="uid://bpfwvdxspcs48" path="res://Assets/TitleScreen/1x/Asset 8.png" id="11_rmoy8"]
+[ext_resource type="Texture2D" uid="uid://byyy26r43d0rv" path="res://Assets/TitleScreen/1x/Asset 9.png" id="12_f4ryc"]
 
 [sub_resource type="Animation" id="Animation_2birm"]
 resource_name = "Bounce"
@@ -127,7 +128,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_1wnrc"]
 resource_name = "FadeIn"
-length = 2.0
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -135,7 +136,7 @@ tracks/0/path = NodePath("FadeRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.807843, 0.937255, 0.905882, 1), Color(0, 0, 0, 0.00392157)]
@@ -151,6 +152,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0.0117647), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TitleSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_tl2xg"]
@@ -287,6 +300,18 @@ tracks/10/keys = {
 "update": 0,
 "values": [Vector2(24, -144)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("TitleSprite:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qc148"]
 _data = {
@@ -307,15 +332,6 @@ position = Vector2(-3.94348, -3.99998)
 scale = Vector2(0.999249, 0.999075)
 texture = ExtResource("2_olvht")
 
-[node name="FadeRect" type="ColorRect" parent="."]
-visible = false
-modulate = Color(0, 0, 0, 0.00392157)
-offset_left = -959.0
-offset_top = -536.0
-offset_right = 968.0
-offset_bottom = 552.0
-color = Color(0.584314, 0.447059, 0.533333, 1)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_qc148")
@@ -323,6 +339,7 @@ libraries = {
 autoplay = "FadeIn"
 
 [node name="TitleSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(-48, -90)
 scale = Vector2(1.08228, 1.08228)
 texture = ExtResource("3_8j784")
@@ -381,7 +398,7 @@ anchor_bottom = 0.5
 offset_left = -168.0
 offset_top = 144.0
 offset_right = 492.0
-offset_bottom = 639.995
+offset_bottom = 639.993
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
@@ -415,6 +432,18 @@ texture = ExtResource("9_o3wf2")
 [node name="stars" type="Sprite2D" parent="."]
 position = Vector2(24, -144)
 texture = ExtResource("11_rmoy8")
+
+[node name="moon" type="Sprite2D" parent="."]
+position = Vector2(184, -352)
+texture = ExtResource("12_f4ryc")
+
+[node name="FadeRect" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 0.00392157)
+offset_left = -959.0
+offset_top = -536.0
+offset_right = 968.0
+offset_bottom = 552.0
+color = Color(0.227451, 0.501961, 0.678431, 1)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
