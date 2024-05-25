@@ -1,0 +1,334 @@
+[gd_scene load_steps=12 format=3 uid="uid://bnc4xssud5nxw"]
+
+[ext_resource type="Texture2D" uid="uid://dccvaakv03cay" path="res://Assets/TitleScreen/title_bg.jpg" id="1_k047u"]
+[ext_resource type="Script" path="res://Scenes/TitleScreen.gd" id="1_ym85r"]
+[ext_resource type="Texture2D" uid="uid://d2jjj7107uu7u" path="res://Assets/TitleScreen/title_name.png" id="2_f0lj7"]
+[ext_resource type="Texture2D" uid="uid://dsurq4madaups" path="res://Assets/TitleScreen/Button.png" id="3_gw2ti"]
+[ext_resource type="FontFile" uid="uid://sia1vmykl6p7" path="res://Assets/Fonts/Blockstepped.ttf" id="4_lqsn3"]
+[ext_resource type="Texture2D" uid="uid://jl6cub3mww63" path="res://Assets/TitleScreen/clouds_right.png" id="6_g0m7e"]
+[ext_resource type="Texture2D" uid="uid://0th1uprkmakv" path="res://Assets/TitleScreen/clouds_left.png" id="7_b4hsc"]
+
+[sub_resource type="Animation" id="Animation_2birm"]
+resource_name = "Bounce"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitleSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-48, -86), Vector2(-48, -76), Vector2(-48, -86), Vector2(-48, -96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayButton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-392, -64), Vector2(-392, -74), Vector2(-392, -64), Vector2(-392, -54)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShopButton:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(64, -64), Vector2(64, -74), Vector2(64, -64), Vector2(64, -54)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TutorialButton:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-160, 128), Vector2(-160, 118), Vector2(-160, 128), Vector2(-160, 138)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CloudsRight:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(8, -4), Vector2(-15, -4)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CloudsLeft:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 4), Vector2(23, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_1wnrc"]
+resource_name = "FadeIn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.807843, 0.937255, 0.905882, 1), Color(0, 0, 0, 0.00392157)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleBg:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.0117647), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tl2xg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.00392157)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-48, -90)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayButton:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-360, 16)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ShopButton:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, 16)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TutorialButton:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-168, 144)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TitleBg:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.0117647)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CloudsRight:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, -4)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CloudsLeft:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qc148"]
+_data = {
+"Bounce": SubResource("Animation_2birm"),
+"FadeIn": SubResource("Animation_1wnrc"),
+"RESET": SubResource("Animation_tl2xg")
+}
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_ym85r")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
+
+[node name="TitleBg" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.0117647)
+position = Vector2(0.500061, -1.49997)
+scale = Vector2(1.49609, 1.49583)
+texture = ExtResource("1_k047u")
+
+[node name="FadeRect" type="ColorRect" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 0.00392157)
+offset_left = -959.0
+offset_top = -536.0
+offset_right = 968.0
+offset_bottom = 552.0
+color = Color(0.584314, 0.447059, 0.533333, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qc148")
+}
+autoplay = "FadeIn"
+
+[node name="CloudsRight" type="Sprite2D" parent="."]
+position = Vector2(8, -4)
+scale = Vector2(2.18333, 2.18333)
+texture = ExtResource("6_g0m7e")
+
+[node name="CloudsLeft" type="Sprite2D" parent="."]
+position = Vector2(0, 4)
+scale = Vector2(2.19375, 2.19375)
+texture = ExtResource("7_b4hsc")
+
+[node name="PlayButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = 16.0
+offset_right = 300.0
+offset_bottom = 512.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.796078, 0.6, 0.623529, 1)
+theme_override_fonts/font = ExtResource("4_lqsn3")
+theme_override_font_sizes/font_size = 64
+text = "Play
+"
+icon = ExtResource("3_gw2ti")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="ShopButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 677.0
+offset_bottom = 512.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.819608, 0.631373, 0.666667, 1)
+theme_override_fonts/font = ExtResource("4_lqsn3")
+theme_override_font_sizes/font_size = 64
+text = "Shop"
+icon = ExtResource("3_gw2ti")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="TutorialButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = 144.0
+offset_right = 492.0
+offset_bottom = 639.995
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.807843, 0.615686, 0.623529, 1)
+theme_override_fonts/font = ExtResource("4_lqsn3")
+theme_override_font_sizes/font_size = 64
+text = "Tutorial"
+icon = ExtResource("3_gw2ti")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="TitleSprite" type="Sprite2D" parent="."]
+position = Vector2(-48, -90)
+scale = Vector2(2.55764, 2.55764)
+texture = ExtResource("2_f0lj7")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]
