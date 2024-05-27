@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var gravity: float = 900.0
 
 var is_hiding: bool = false
+var hiding_spot: Area2D = null
 var is_jumping: bool = false
 var is_falling: bool = false
 
@@ -70,9 +71,21 @@ func handle_jump() -> void:
 		is_falling = false
 
 func handle_hiding() -> void:
-	if Input.is_action_just_pressed("hide"):
+	if hiding_spot and Input.is_action_just_pressed("ui_accept"):
 		is_hiding = !is_hiding
 		$PlayerSprite.visible = not is_hiding
+		if is_hiding:
+			global_position = hiding_spot.global_position
+			hiding_spot.get_node("Sprite2D").modulate.a = 0.5
+		else:
+			hiding_spot.get_node("Sprite2D").modulate.a = 1.0
+
+func _on_HidingSpot_player_entered_hiding(hiding_spot: Area2D) -> void:
+	self.hiding_spot = hiding_spot
+
+func _on_HidingSpot_player_exited_hiding(hiding_spot: Area2D) -> void:
+	if self.hiding_spot == hiding_spot:
+		self.hiding_spot = null
 
 func _on_EnemyBounced():
 	velocity.y = -jump_force / 2 # Gives the player a bounce effect 

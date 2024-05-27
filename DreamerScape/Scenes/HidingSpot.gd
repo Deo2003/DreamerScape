@@ -1,16 +1,17 @@
 extends Area2D
 
-signal player_entered
-signal player_exited
+signal player_entered_hiding
+signal player_exited_hiding
 
 func _ready() -> void:
-	connect("body_entered", self, "_on_body_entered")
-	connect("body_exited", self, "_on_body_exited")
+	$HidingZone.connect("body_entered", Callable(self, "_on_HidingZone_body_entered"))
+	$HidingZone.connect("body_exited", Callable(self, "_on_HidingZone_body_exited"))
 
-func _on_body_entered(body: Node) -> void:
+func _on_hiding_zone_body_entered(body):
 	if body.name == "Player":
-		emit_signal("player_entered")
+		emit_signal("player_entered_hiding", self)
+ 
 
-func _on_body_exited(body: Node) -> void:
+func _on_hiding_zone_body_exited(body):
 	if body.name == "Player":
-		emit_signal("player_exited")
+		emit_signal("player_exited_hiding", self)

@@ -31,6 +31,7 @@ func _on_animation_player_animation_finished(anim_name) -> void:
 		# Start the bounce animation
 		$AnimationPlayer.play("Bounce")
 		# Show title and buttons after fade-in animation
+		$FadeRect.visible = false
 		$PlayButton.visible = true
 		$ShopButton.visible = true
 		$TutorialButton.visible = true
