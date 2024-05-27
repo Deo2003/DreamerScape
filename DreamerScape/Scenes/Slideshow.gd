@@ -22,6 +22,8 @@ var current_slide: int = 0
 var timer: Timer
 
 func _ready() -> void:
+	$AnimationPlayer.connect("animation_finished", Callable(self, "_on_FadeIn_finished"))
+	$AudioStreamPlayer.play()
 	$SkipButton.connect("pressed", Callable(self, "_on_skip_button_pressed"))
 	timer = Timer.new()
 	add_child(timer)
@@ -50,3 +52,11 @@ func _on_timer_timeout() -> void:
 	current_slide += 1
 	show_slide(current_slide)
 	timer.start(slide_duration)
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "FadeIn":
+		# Start the bounce animation
+		$AnimationPlayer.play("Bounce")
+		# Show title and buttons after fade-in animation
+		$ColorRect.visible = false

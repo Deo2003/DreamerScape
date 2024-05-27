@@ -1,14 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3hy17fdxc4xd"]
+[gd_scene load_steps=19 format=3 uid="uid://c3hy17fdxc4xd"]
 
 [ext_resource type="Script" path="res://Scenes/Slideshow.gd" id="1_43p4v"]
-[ext_resource type="Texture2D" uid="uid://cjqjxru23qiwi" path="res://Assets/Old paper 39 stock by ofruin-stock on DeviantArt.jpg" id="2_j6kl8"]
+[ext_resource type="Texture2D" uid="uid://bg7lg108i3ivc" path="res://Assets/Slideshow/1x/Slideshow_bg.png" id="2_2si5p"]
 [ext_resource type="FontFile" uid="uid://sia1vmykl6p7" path="res://Assets/Fonts/Blockstepped.ttf" id="4_hw5e3"]
-[ext_resource type="Texture2D" uid="uid://jp30f1x58j6" path="res://Assets/Slideshow/banner_bottom.png" id="4_mvuv5"]
-[ext_resource type="Texture2D" uid="uid://b8fj841fwcc7b" path="res://Assets/Slideshow/banner_top.png" id="5_k6sk5"]
-[ext_resource type="Texture2D" uid="uid://hpje6ad5rv5a" path="res://Assets/Slideshow/text_label1.png" id="6_knihj"]
-[ext_resource type="Texture2D" uid="uid://f7t65ewniv0c" path="res://Assets/Slideshow/text_label2.png" id="7_bpi2m"]
-[ext_resource type="Texture2D" uid="uid://bf6uctxgq4l2" path="res://Assets/Slideshow/text_label3.png" id="8_o2q1k"]
-[ext_resource type="Texture2D" uid="uid://bqmc2v8e1cpvk" path="res://Assets/Slideshow/text_label4.png" id="9_dxofc"]
+[ext_resource type="Texture2D" uid="uid://by16d5ceugwl0" path="res://Assets/Slideshow/1x/text_label1.png" id="5_rbup2"]
+[ext_resource type="Texture2D" uid="uid://tdl0qimrxwiq" path="res://Assets/Slideshow/1x/text_label2.png" id="6_1tmbo"]
+[ext_resource type="Texture2D" uid="uid://cruhpfcwwfjfw" path="res://Assets/Slideshow/1x/text_label3.png" id="7_8cr5g"]
+[ext_resource type="Texture2D" uid="uid://btiqwbt8orqeg" path="res://Assets/Slideshow/1x/text_label4.png" id="8_ylln8"]
+[ext_resource type="Texture2D" uid="uid://cnxsgciyeg71o" path="res://Assets/Slideshow/1x/text_label5.png" id="9_f3sm0"]
+[ext_resource type="Texture2D" uid="uid://cmf4a667s0ccq" path="res://Assets/Slideshow/1x/text_label6.png" id="10_xyp8m"]
+[ext_resource type="Texture2D" uid="uid://deneoqu1kdun8" path="res://Assets/Slideshow/1x/text_label7.png" id="11_cpv5d"]
+[ext_resource type="Texture2D" uid="uid://xbvpngv2bpk2" path="res://Assets/Slideshow/1x/text_label8.png" id="12_87pgc"]
+[ext_resource type="AudioStream" uid="uid://be63usmwrgvjw" path="res://Assets/Audio/Music/DreamerScapeopeningtheme.ogg" id="13_n3ab2"]
+[ext_resource type="Texture2D" uid="uid://ckuenv5d1uwgu" path="res://Assets/Slideshow/1x/Skip_button.png" id="14_b1ys2"]
 
 [sub_resource type="Animation" id="Animation_lb0wk"]
 resource_name = "Bounce"
@@ -17,26 +21,26 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BannerBottom:position")
+tracks/0/path = NodePath("SkipButton:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 2, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(960, 680), Vector2(960, 700)]
+"values": [Vector2(1624, 48), Vector2(1624, 38), Vector2(1624, 48), Vector2(1624, 58)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BannerTop:position")
+tracks/1/path = NodePath("ImageSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 2, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(960, 436), Vector2(960, 416)]
+"values": [Vector2(976, 536), Vector2(976, 546), Vector2(976, 536), Vector2(976, 556)]
 }
 
 [sub_resource type="Animation" id="Animation_015vq"]
@@ -44,48 +48,89 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BannerBottom:position")
+tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(960, 680)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BannerTop:position")
+tracks/1/path = NodePath("SkipButton:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(960, 416)]
+"values": [Vector2(1624, 48)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ImageSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(976, 536)]
+}
+
+[sub_resource type="Animation" id="Animation_1gio2"]
+resource_name = "FadeIn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1una2"]
 _data = {
 "Bounce": SubResource("Animation_lb0wk"),
+"FadeIn": SubResource("Animation_1gio2"),
 "RESET": SubResource("Animation_015vq")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7nl1a"]
 animations = [{
 "frames": [{
-"duration": 0.5,
-"texture": ExtResource("6_knihj")
+"duration": 1.0,
+"texture": ExtResource("5_rbup2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_bpi2m")
+"texture": ExtResource("6_1tmbo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_o2q1k")
+"texture": ExtResource("7_8cr5g")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_dxofc")
+"texture": ExtResource("8_ylln8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_f3sm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xyp8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cpv5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_87pgc")
 }],
 "loop": false,
 "name": &"default",
@@ -93,76 +138,72 @@ animations = [{
 }]
 
 [node name="Slideshow" type="CanvasLayer"]
+follow_viewport_enabled = true
 script = ExtResource("1_43p4v")
 
 [node name="Image1" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.960784)
-position = Vector2(957.589, 545.408)
-rotation = -1.57079
-scale = Vector2(1.79803, 2.1223)
-texture = ExtResource("2_j6kl8")
+position = Vector2(960.892, 547.604)
+rotation = -3.14159
+scale = Vector2(0.995432, 0.9913)
+texture = ExtResource("2_2si5p")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="ImageSprite" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(976, 536)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 544)
 
-[node name="BannerBottom" type="Sprite2D" parent="."]
-modulate = Color(0.465277, 0.319576, 0.23069, 1)
-position = Vector2(960, 680)
-scale = Vector2(1.9, 1.48889)
-texture = ExtResource("4_mvuv5")
-
-[node name="BannerTop" type="Sprite2D" parent="."]
-modulate = Color(0.466667, 0.317647, 0.231373, 1)
-position = Vector2(960, 416)
-scale = Vector2(1.9, 1.49444)
-texture = ExtResource("5_k6sk5")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_1una2")
 }
-autoplay = "Bounce"
+autoplay = "FadeIn"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.466667, 0.317647, 0.231373, 1)
 position = Vector2(968, 896)
 scale = Vector2(1.75, 1.75)
 sprite_frames = SubResource("SpriteFrames_7nl1a")
 autoplay = "default"
-frame = 3
+frame = 7
 frame_progress = 1.0
 
 [node name="SkipButton" type="Button" parent="."]
-modulate = Color(0.466667, 0.317647, 0.231373, 1)
-offset_left = 1784.0
+offset_left = 1624.0
 offset_top = 48.0
-offset_right = 1909.0
-offset_bottom = 173.0
-theme_override_colors/font_color = Color(0.466667, 0.317647, 0.231373, 1)
+offset_right = 1901.0
+offset_bottom = 148.0
+theme_override_colors/font_color = Color(0.0588235, 0.0901961, 0.223529, 1)
 theme_override_fonts/font = ExtResource("4_hw5e3")
 theme_override_font_sizes/font_size = 42
 text = "Skip"
-icon = ExtResource("6_knihj")
+icon = ExtResource("14_b1ys2")
 flat = true
 icon_alignment = 1
 
 [node name="TextLabel" type="Label" parent="."]
-offset_left = 448.0
-offset_top = 840.0
-offset_right = 1498.0
-offset_bottom = 940.0
+offset_left = 624.0
+offset_top = 824.0
+offset_right = 1312.0
+offset_bottom = 984.0
 size_flags_vertical = 8
-theme_override_colors/font_color = Color(0.466667, 0.317647, 0.231373, 1)
+theme_override_colors/font_color = Color(0.0509804, 0.0862745, 0.223529, 1)
 theme_override_fonts/font = ExtResource("4_hw5e3")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1088.0
+color = Color(0.393461, 0.606626, 0.707658, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_n3ab2")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]

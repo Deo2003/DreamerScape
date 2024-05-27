@@ -5,25 +5,16 @@ extends Node2D
 func _ready() -> void:
 	# Initially hide title and buttons
 	$PlayButton.visible = false
-	$ShopButton.visible = false
-	$TutorialButton.visible = false
+	$Theme.play()
 
 	# Connect the fade-in animation's finished signal to a function
 	$AnimationPlayer.connect("animation_finished", Callable(self, "_on_FadeIn_finished"))
 	$PlayButton.connect("pressed", Callable(self, "_on_play_button_pressed"))
-	$ShopButton.connect("pressed", Callable(self, "_on_shop_button_pressed"))
-	$TutorialButton.connect("pressed", Callable(self, "_on_tutorial_button_pressed"))
-
 
 func _on_play_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/SlideshowScene.tscn")
+	change_scene_with_loading("res://LoadingScreen.tscn", "res://Scenes/SlideshowScene.tscn")
+	#get_tree().change_scene_to_file("res://Scenes/SlideshowScene.tscn")
 
-func _on_shop_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/ShopScene.tscn")
-
-
-func _on_tutorial_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/TutorialScene.tscn")
 
 
 func _on_animation_player_animation_finished(anim_name) -> void:
@@ -33,6 +24,8 @@ func _on_animation_player_animation_finished(anim_name) -> void:
 		# Show title and buttons after fade-in animation
 		$FadeRect.visible = false
 		$PlayButton.visible = true
-		$ShopButton.visible = true
-		$TutorialButton.visible = true
-		
+
+func change_scene_with_loading(screen_path: String, next_scene_path: String):
+	var loading_screen = ResourceLoader.load(screen_path).instance()
+	get_tree().root.add_child(loading_screen)
+	loading_screen.next_scene = next_scene_path
