@@ -4,11 +4,14 @@ extends CharacterBody2D
 @export var run_speed: float = 250.0
 @export var jump_force: float = 575.0
 @export var gravity: float = 900.0
+@export var ladder_speed: float = 100.0
 
 var is_hiding: bool = false
 var hiding_spot: Area2D = null
 var is_jumping: bool = false
 var is_falling: bool = false
+var is_on_ladder: bool = false
+var current_ladder: Area2D = null
 
 func _ready() -> void:
 	$RayCast2D.enabled = true
@@ -22,6 +25,9 @@ func _physics_process(delta: float) -> void:
 
 	if get_tree().paused:
 		return
+	
+	if is_on_ladder:
+		handle_ladder_movement()
 
 	handle_movement()
 	handle_jump()
@@ -58,6 +64,7 @@ func handle_movement() -> void:
 func handle_jump() -> void:
 	if is_on_floor() and Input.is_action_just_pressed("ui_jump"):
 		$PlayerSprite.play("jump")  # Play jump animation
+		$jump_sfx.play()
 		velocity.y = -jump_force
 		is_jumping = true
 		is_falling = false
@@ -86,6 +93,28 @@ func _on_HidingSpot_player_entered_hiding(hiding_spot: Area2D) -> void:
 func _on_HidingSpot_player_exited_hiding(hiding_spot: Area2D) -> void:
 	if self.hiding_spot == hiding_spot:
 		self.hiding_spot = null
+
+func handle_ladder_movement() -> void:
+	velocity = Vector2.ZERO
+	if Input.is_action_pressed("ui_up"):
+		velocity.y -= ladder_speed
+		$PlayerSprite.play("climb")  # Play climb animation
+	elif Input.is_action_pressed("ui_down"):
+		velocity.y += ladder_speed
+		$PlayerSprite.play("climb")  # Play climb animation
+	else:
+		$PlayerSprite.play("idle")  # Play idle animation
+
+func _on_Ladder_player_entered_ladder(ladder: Area2D) -> void:
+	is_on_ladder = true
+	current_ladder = ladder
+	gravity = 0  # Disable gravity while on the ladder
+
+func _on_Ladder_player_exited_ladder(ladder: Area2D) -> void:
+	if current_ladder == ladder:
+		is_on_ladder = false
+		current_ladder = null
+		gravity = 900  # Re-enable gravity when off the ladder
 
 func _on_EnemyBounced():
 	velocity.y = -jump_force / 2 # Gives the player a bounce effect 

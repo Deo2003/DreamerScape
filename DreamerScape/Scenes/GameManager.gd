@@ -5,6 +5,10 @@ var fragment_count: int = 0
 func _ready() -> void:
 	var player = get_node("Player")
 	if player:
+		for ladder in get_tree().get_nodes_in_group("Ladders"):
+			ladder.connect("player_entered_ladder", Callable(player, "_on_Ladder_player_entered_ladder"))
+			ladder.connect("player_exited_ladder", Callable(player, "_on_Ladder_player_exited_ladder"))
+	if player:
 		player.connect("player_entered_hiding", Callable(self, "_on_Player_player_entered_hiding"))
 		player.connect("player_exited_hiding", Callable(self, "_on_Player_player_exited_hiding"))
 	else:

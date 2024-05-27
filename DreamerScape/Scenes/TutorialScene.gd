@@ -5,6 +5,12 @@ extends Node2D
 func _ready():
 	$AnimationPlayer.play("clouds")
 	$AudioStreamPlayer.play()
+	$Fragment/AnimationPlayer.play("bounce")
+	var player = get_node("Player")
+	if player:
+		for ladder in get_tree().get_nodes_in_group("Ladders"):
+			ladder.connect("player_entered_ladder", Callable(player, "_on_Ladder_player_entered_ladder"))
+			ladder.connect("player_exited_ladder", Callable(player, "_on_Ladder_player_exited_ladder"))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
