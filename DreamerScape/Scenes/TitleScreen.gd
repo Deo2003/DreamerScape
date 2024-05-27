@@ -4,6 +4,7 @@ extends Node2D
 
 func _ready() -> void:
 	# Initially hide title and buttons
+	$TitleSprite.visible = false
 	$PlayButton.visible = false
 	$Theme.play()
 
@@ -25,6 +26,7 @@ func _on_animation_player_animation_finished(anim_name) -> void:
 		# Show title and buttons after fade-in animation
 		$FadeRect.visible = false
 		$PlayButton.visible = true
+		$TitleSprite.visible = true
 
 func change_scene_with_loading(screen_path: String, next_scene_path: String):
 	var loading_scene = ResourceLoader.load(screen_path)

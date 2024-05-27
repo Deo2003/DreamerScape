@@ -169,6 +169,7 @@ frame = 7
 frame_progress = 1.0
 
 [node name="SkipButton" type="Button" parent="."]
+anchors_preset = -1
 offset_left = 1624.0
 offset_top = 48.0
 offset_right = 1901.0
