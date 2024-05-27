@@ -337,6 +337,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(0.796078, 0.6, 0.623529, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0.709804)
 theme_override_fonts/font = ExtResource("4_lqsn3")
 theme_override_font_sizes/font_size = 64
 icon = ExtResource("12_kcbe6")

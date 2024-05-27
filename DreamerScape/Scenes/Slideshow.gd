@@ -43,7 +43,8 @@ func show_slide(index: int) -> void:
 	$AnimatedSprite2D.play()
 
 func start_tutorial() -> void:
-	get_tree().change_scene_to_file("res://Scenes/TutorialScene.tscn")
+	change_scene_with_loading("res://Scenes/LoadingScreen.tscn", "res://Scenes/TutorialScene.tscn")
+	#get_tree().change_scene_to_file("res://Scenes/TutorialScene.tscn")
 
 func _on_skip_button_pressed() -> void:
 	start_tutorial()
@@ -60,3 +61,12 @@ func _on_animation_player_animation_finished(anim_name):
 		$AnimationPlayer.play("Bounce")
 		# Show title and buttons after fade-in animation
 		$ColorRect.visible = false
+
+func change_scene_with_loading(screen_path: String, next_scene_path: String):
+	var loading_scene = ResourceLoader.load(screen_path)
+	if loading_scene:
+		var loading_instance = loading_scene.instantiate()
+		get_tree().root.add_child(loading_instance)
+		loading_instance.next_scene = next_scene_path
+	else:
+		print("Error loading scene: ", screen_path)
