@@ -1,7 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://du5cak3bxyafp"]
+[gd_scene load_steps=7 format=3 uid="uid://du5cak3bxyafp"]
 
 [ext_resource type="Texture2D" uid="uid://cufv0gi8v3ypd" path="res://Assets/GameMap/1x/game_map.png" id="1_b3sa3"]
 [ext_resource type="Texture2D" uid="uid://bacntln0by52i" path="res://Assets/GameMap/1x/clouds.png" id="2_751gd"]
+[ext_resource type="Texture2D" uid="uid://bas84o61tes7p" path="res://Assets/GameMap/1x/map_button.png" id="3_rdmk6"]
+
+[sub_resource type="Animation" id="Animation_w8hdr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("clouds:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(952, 488)]
+}
 
 [sub_resource type="Animation" id="Animation_sqiys"]
 resource_name = "bounce"
@@ -18,21 +34,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(952, 488), Vector2(952, 478), Vector2(952, 488), Vector2(952, 498)]
-}
-
-[sub_resource type="Animation" id="Animation_w8hdr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("clouds:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(952, 488)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3ydjn"]
@@ -57,3 +58,47 @@ libraries = {
 "": SubResource("AnimationLibrary_3ydjn")
 }
 autoplay = "bounce"
+
+[node name="Location1Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Location1Button"]
+position = Vector2(544, 264)
+texture = ExtResource("3_rdmk6")
+
+[node name="Location2Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Location2Button"]
+position = Vector2(520, 432)
+texture = ExtResource("3_rdmk6")
+
+[node name="Location3Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Location3Button"]
+position = Vector2(632, 568)
+texture = ExtResource("3_rdmk6")
+
+[node name="Location4Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Location4Button"]
+position = Vector2(752, 752)
+texture = ExtResource("3_rdmk6")
+
+[node name="Location5Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Location6Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Location7Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0

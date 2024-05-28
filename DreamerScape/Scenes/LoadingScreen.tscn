@@ -57,6 +57,7 @@ anchors_preset = 0
 script = ExtResource("1_uohse")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = -960.0
 offset_top = -544.0
 offset_right = 960.0
