@@ -65,15 +65,13 @@ position = Vector2(-68, -129.33)
 scale = Vector2(0.370572, 0.370572)
 sprite_frames = SubResource("SpriteFrames_syuws")
 animation = &"openning"
-frame = 2
-frame_progress = 0.656905
+frame_progress = 0.754312
 
 [node name="Padlock" type="AnimatedSprite2D" parent="."]
-visible = false
+position = Vector2(-64, -120)
+scale = Vector2(0.365546, 0.365546)
 sprite_frames = SubResource("SpriteFrames_nl47t")
 animation = &"unlock"
-frame = 1
-frame_progress = 0.298159
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-68, -124)

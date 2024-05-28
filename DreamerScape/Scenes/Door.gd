@@ -4,16 +4,15 @@ extends Area2D
 
 var is_open: bool = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	connect("body_entered", Callable(self, "_on_body_entered"))
-
+	$Padlock.play("locked")  # Play padlock locked animation
+	if not is_connected("body_entered", Callable(self, "_on_body_entered")):
+		connect("body_entered", Callable(self, "_on_body_entered"))
 
 func unlock() -> void:
-	$Padlock.play("unlock")
+	$Padlock.play("unlock")  # Play padlock unlock animation
 	is_open = true
-	$AnimatedSprite2D.play("openning")
-
+	$AnimatedSprite2D.play("openning")  # Play door opening animation
 
 func _on_body_entered(body: Node) -> void:
 	if body.name == "Player" and is_open:
