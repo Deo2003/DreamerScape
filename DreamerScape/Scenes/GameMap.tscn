@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://du5cak3bxyafp"]
+[gd_scene load_steps=9 format=3 uid="uid://du5cak3bxyafp"]
 
+[ext_resource type="Script" path="res://Scenes/GameMap.gd" id="1_43emf"]
 [ext_resource type="Texture2D" uid="uid://cufv0gi8v3ypd" path="res://Assets/GameMap/1x/game_map.png" id="1_b3sa3"]
 [ext_resource type="Texture2D" uid="uid://bacntln0by52i" path="res://Assets/GameMap/1x/clouds.png" id="2_751gd"]
 [ext_resource type="Texture2D" uid="uid://bas84o61tes7p" path="res://Assets/GameMap/1x/map_button.png" id="3_rdmk6"]
+[ext_resource type="Texture2D" uid="uid://p2yx4w5nc68h" path="res://Assets/Doors/1x/lock1.png" id="4_3aw1k"]
 
 [sub_resource type="Animation" id="Animation_w8hdr"]
 length = 0.001
@@ -43,6 +45,7 @@ _data = {
 }
 
 [node name="GameMap" type="Node2D"]
+script = ExtResource("1_43emf")
 
 [node name="map" type="Sprite2D" parent="."]
 position = Vector2(964, 546)
@@ -60,45 +63,119 @@ libraries = {
 autoplay = "bounce"
 
 [node name="Location1Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 520.0
+offset_top = 232.0
+offset_right = 568.0
+offset_bottom = 272.0
+flat = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Location1Button"]
-position = Vector2(544, 264)
+position = Vector2(24, 32)
 texture = ExtResource("3_rdmk6")
+
+[node name="LockedIcon" type="Sprite2D" parent="Location1Button"]
+position = Vector2(40, 0)
+scale = Vector2(0.231092, 0.231092)
+texture = ExtResource("4_3aw1k")
 
 [node name="Location2Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 496.0
+offset_top = 400.0
+offset_right = 536.0
+offset_bottom = 440.0
+flat = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Location2Button"]
-position = Vector2(520, 432)
+position = Vector2(24, 32)
 texture = ExtResource("3_rdmk6")
+
+[node name="LockedIcon" type="Sprite2D" parent="Location2Button"]
+position = Vector2(40, 7.99997)
+scale = Vector2(0.231092, 0.231092)
+texture = ExtResource("4_3aw1k")
 
 [node name="Location3Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 608.0
+offset_top = 536.0
+offset_right = 656.0
+offset_bottom = 576.0
+flat = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Location3Button"]
-position = Vector2(632, 568)
+position = Vector2(24, 32)
 texture = ExtResource("3_rdmk6")
+
+[node name="LockedIcon" type="Sprite2D" parent="Location3Button"]
+position = Vector2(40, 0)
+scale = Vector2(0.231092, 0.231092)
+texture = ExtResource("4_3aw1k")
 
 [node name="Location4Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 728.0
+offset_top = 720.0
+offset_right = 776.0
+offset_bottom = 760.0
+flat = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Location4Button"]
-position = Vector2(752, 752)
+position = Vector2(24, 32)
 texture = ExtResource("3_rdmk6")
 
+[node name="LockedIcon" type="Sprite2D" parent="Location4Button"]
+position = Vector2(40, 0)
+scale = Vector2(0.231092, 0.231092)
+texture = ExtResource("4_3aw1k")
+
 [node name="Location5Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 904.0
+offset_top = 616.0
+offset_right = 952.0
+offset_bottom = 656.0
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Location5Button"]
+position = Vector2(24, 32)
+texture = ExtResource("3_rdmk6")
+
+[node name="LockedIcon" type="Sprite2D" parent="Location5Button"]
+position = Vector2(40.0001, 0)
+scale = Vector2(0.231092, 0.231092)
+texture = ExtResource("4_3aw1k")
 
 [node name="Location6Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 1248.0
+offset_top = 336.0
+offset_right = 1296.0
+offset_bottom = 376.0
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Location6Button"]
+position = Vector2(24, 32)
+texture = ExtResource("3_rdmk6")
+
+[node name="LockedIcon" type="Sprite2D" parent="Location6Button"]
+position = Vector2(40, 0)
+scale = Vector2(0.231092, 0.231092)
+texture = ExtResource("4_3aw1k")
 
 [node name="Location7Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 1000.0
+offset_top = 216.0
+offset_right = 1048.0
+offset_bottom = 256.0
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Location7Button"]
+position = Vector2(24, 32)
+texture = ExtResource("3_rdmk6")
+
+[node name="LockedIcon" type="Sprite2D" parent="Location7Button"]
+position = Vector2(40, 0)
+scale = Vector2(0.231092, 0.231092)
+texture = ExtResource("4_3aw1k")
+
+[node name="HoverLabel" type="Label" parent="."]
+offset_left = 696.0
+offset_top = 40.0
+offset_right = 1208.0
+offset_bottom = 88.0
