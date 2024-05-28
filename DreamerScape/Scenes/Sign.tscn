@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c025bpqcngjn7"]
+
+[ext_resource type="Script" path="res://Scenes/Sign.gd" id="1_bnujt"]
+[ext_resource type="Texture2D" uid="uid://d38l8ykf2tmmt" path="res://Assets/Sprites/1x/sign.png" id="1_kmydl"]
+[ext_resource type="FontFile" uid="uid://sia1vmykl6p7" path="res://Assets/Fonts/Blockstepped.ttf" id="2_wmsa2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swouf"]
+size = Vector2(96, 96)
+
+[node name="Sign" type="Area2D"]
+script = ExtResource("1_bnujt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kmydl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_swouf")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 64.0
+offset_bottom = -64.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_wmsa2")
+theme_override_font_sizes/font_size = 16
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
