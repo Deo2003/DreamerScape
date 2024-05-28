@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var jump_force: float = 575.0
 @export var gravity: float = 900.0
 @export var ladder_speed: float = 100.0
+@export var fall_threshold: float = 750.0  # Adjust this based on your scene
 
 var is_hiding: bool = false
 var hiding_spot: Area2D = null
@@ -12,11 +13,13 @@ var is_jumping: bool = false
 var is_falling: bool = false
 var is_on_ladder: bool = false
 var current_ladder: Area2D = null
+var start_position: Vector2
 
 func _ready() -> void:
 	$RayCast2D.enabled = true
 	$PlayerSprite.play("idle")  # Start with the idle animation
 	$Camera2D.make_current()  # Correct usage without assignment
+	start_position = get_node("/root/TutorialScene/PlayerStart").global_position
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
@@ -32,6 +35,11 @@ func _physics_process(delta: float) -> void:
 	handle_movement()
 	handle_jump()
 	handle_hiding()
+	
+	# Check if the player has fallen off the screen
+	if global_position.y > fall_threshold:
+		reset_position()
+	
 	velocity.y += gravity * delta
 	move_and_slide()
 
@@ -109,6 +117,10 @@ func _on_Ladder_player_entered_ladder(ladder: Area2D) -> void:
 	is_on_ladder = true
 	current_ladder = ladder
 	gravity = 0  # Disable gravity while on the ladder
+
+func reset_position() -> void:
+	global_position = start_position
+	velocity = Vector2.ZERO
 
 func _on_Ladder_player_exited_ladder(ladder: Area2D) -> void:
 	if current_ladder == ladder:

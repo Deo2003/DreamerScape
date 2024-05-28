@@ -232,7 +232,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ewftb"]
-size = Vector2(80, 136)
+size = Vector2(64, 88)
 
 [sub_resource type="Animation" id="Animation_x535r"]
 resource_name = "fall"
@@ -323,10 +323,10 @@ script = ExtResource("1_lk0aw")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-32, 24)
-scale = Vector2(0.728571, 0.728571)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_4j4gv")
-animation = &"climb"
-frame_progress = 0.0528578
+animation = &"walk"
+frame_progress = 0.383501
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-32, 20)
@@ -342,7 +342,7 @@ target_position = Vector2(0, 20)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(1e-05, 1e-05)
-zoom = Vector2(3.865, 3.865)
+zoom = Vector2(3, 3)
 
 [node name="jump_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_5arvm")
