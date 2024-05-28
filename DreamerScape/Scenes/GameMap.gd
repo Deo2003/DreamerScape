@@ -44,7 +44,7 @@ func _on_location_button_pressed(index: int) -> void:
 		"res://Scenes/CastleDistrict.tscn",
 		"res://Scenes/TheIsland.tscn"
 	]
-	get_tree().change_scene(scene_paths[index])
+	get_tree().change_scene_to_file(scene_paths[index])
 
 func _on_location_button_mouse_entered(index: int) -> void:
 	$HoverLabel.text = hover_labels[index]
