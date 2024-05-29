@@ -61,6 +61,7 @@ shape = SubResource("RectangleShape2D_2w3lf")
 libraries = {
 "": SubResource("AnimationLibrary_aqeyj")
 }
+autoplay = "bounce"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_y3iyw")
