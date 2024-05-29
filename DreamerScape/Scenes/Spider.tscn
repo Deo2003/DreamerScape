@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bripc61xfh75o"]
+
+[ext_resource type="Texture2D" uid="uid://c18qxblcpu70n" path="res://Assets/Sprites/Enemies/1x/enemy_sprites.png" id="1_tb55m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5o5t"]
+atlas = ExtResource("1_tb55m")
+region = Rect2(0, 0, 274, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7lr5"]
+atlas = ExtResource("1_tb55m")
+region = Rect2(290, 0, 274, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc0od"]
+atlas = ExtResource("1_tb55m")
+region = Rect2(580, 0, 274, 141)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6qjck"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5o5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7lr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bc0od")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8qrh"]
+size = Vector2(264, 38)
+
+[node name="Spider" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6qjck")
+frame_progress = 0.909523
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 29)
+shape = SubResource("RectangleShape2D_e8qrh")

@@ -5,24 +5,24 @@
 [ext_resource type="FontFile" uid="uid://sia1vmykl6p7" path="res://Assets/Fonts/Blockstepped.ttf" id="2_wmsa2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swouf"]
-size = Vector2(64, 56)
+size = Vector2(64, 64)
 
 [node name="Sign" type="Area2D"]
 script = ExtResource("1_bnujt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(22.1641, 16.75)
-scale = Vector2(0.661616, 0.661616)
+position = Vector2(22.1641, 8.75)
+scale = Vector2(0.661616, 0.823232)
 texture = ExtResource("1_kmydl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(24, 20)
+position = Vector2(24, 16)
 shape = SubResource("RectangleShape2D_swouf")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -40.0
+offset_left = -64.0
 offset_top = -88.0
-offset_right = 88.0
+offset_right = 128.0
 offset_bottom = -24.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_wmsa2")
