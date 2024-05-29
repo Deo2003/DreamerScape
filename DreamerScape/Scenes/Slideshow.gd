@@ -1,16 +1,16 @@
 extends CanvasLayer
 
 @export var slides: Array = [
-	{"image": "res://Assets/Slideshow/slide1.jpg", "text": "In the tranquil Kingdom of Prairie, life thrived amidst rolling hills, serene rivers, and bustling marketplaces. 
+	{"image": "res://Assets/Slideshow/slide1.png", "text": "In the tranquil Kingdom of Prairie, life thrived amidst rolling hills, serene rivers, and bustling marketplaces. 
 															The townsfolk went about their daily lives with joy, under the watchful protection of the castle. Peace and harmony
 															reigned, with dreams as sweet as the gentle breeze that caressed the land."},
-	{"image": "res://Assets/Slideshow/slide2.jpg", "text": "But peace was fleeting. Dark clouds gathered over the kingdom, bringing with them a torrential storm that mirrored
+	{"image": "res://Assets/Slideshow/slide2.png", "text": "But peace was fleeting. Dark clouds gathered over the kingdom, bringing with them a torrential storm that mirrored
 															the fear spreading among the people. As the rain poured down, an unsettling presence began to haunt the dreams of 
 															the citizens."},
-	{"image": "res://Assets/Slideshow/slide3.jpg", "text": "Monsters of darkness and dread crept into the dreams of Prairie’s citizens, turning serene nights into terrifying
+	{"image": "res://Assets/Slideshow/slide3.png", "text": "Monsters of darkness and dread crept into the dreams of Prairie’s citizens, turning serene nights into terrifying
 															ordeals. These nightmarish creatures, born of fear and despair, roamed freely, causing havoc and distress. The 
 															kingdom's once-peaceful nights were now plagued with shadows and fear, leaving the people yearning for solace."},
-	{"image": "res://Assets/Slideshow/slide4.jpg", "text": "Yet, hope remained. Brave individuals known as Dreamers rose to the challenge, venturing into the very heart of 
+	{"image": "res://Assets/Slideshow/slide4.png", "text": "Yet, hope remained. Brave individuals known as Dreamers rose to the challenge, venturing into the very heart of 
 															these nightmares. With courage and skill, they battled the monstrous invaders, restoring peace to the dreams of 
 															Prairie’s people. In both the waking world and the realm of dreams, the Dreamers stand as steadfast guardians, 
 															ensuring the safety and tranquility of their beloved kingdom."}
