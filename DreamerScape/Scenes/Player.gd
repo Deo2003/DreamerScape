@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var gravity: float = 900.0
 @export var ladder_speed: float = 100.0
 @export var fall_threshold: float = 750.0  # Adjust this based on your scene
+@export var max_lives: int = 3
 
 var is_hiding: bool = false
 var hiding_spot: Area2D = null
@@ -14,8 +15,10 @@ var is_falling: bool = false
 var is_on_ladder: bool = false
 var current_ladder: Area2D = null
 var start_position: Vector2
+var lives: int
 
 func _ready() -> void:
+	lives = max_lives
 	$RayCast2D.enabled = true
 	$PlayerSprite.play("idle")  # Start with the idle animation
 	$Camera2D.make_current()  # Correct usage without assignment
@@ -128,5 +131,17 @@ func _on_Ladder_player_exited_ladder(ladder: Area2D) -> void:
 		current_ladder = null
 		gravity = 900  # Re-enable gravity when off the ladder
 
-func _on_EnemyBounced():
-	velocity.y = -jump_force / 2 # Gives the player a bounce effect 
+func take_damage(amount: int) -> void:
+	lives -= amount
+	if lives <= 0:
+		die()
+
+func die() -> void:
+	if get_tree().current_scene.name == "TutorialScene":
+		reset_position()
+	else:
+		get_tree().reload_current_scene()
+
+func is_bouncing_on_head(enemy: Node) -> bool:
+	retutn velocity.y > 0 and global_position.y < enemy.global_position.y
+
