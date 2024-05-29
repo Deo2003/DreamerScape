@@ -143,5 +143,5 @@ func die() -> void:
 		get_tree().reload_current_scene()
 
 func is_bouncing_on_head(enemy: Node) -> bool:
-	retutn velocity.y > 0 and global_position.y < enemy.global_position.y
+	return velocity.y > 0 and global_position.y < enemy.global_position.y
 

@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bripc61xfh75o"]
+[gd_scene load_steps=12 format=3 uid="uid://bripc61xfh75o"]
 
 [ext_resource type="Script" path="res://Scenes/Spider.gd" id="1_sdm8n"]
 [ext_resource type="Texture2D" uid="uid://c18qxblcpu70n" path="res://Assets/Sprites/Enemies/1x/enemy_sprites.png" id="1_tb55m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nu3dp"]
+size = Vector2(80, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a5o5t"]
 atlas = ExtResource("1_tb55m")
@@ -28,21 +31,75 @@ animations = [{
 "texture": SubResource("AtlasTexture_bc0od")
 }],
 "loop": true,
-"name": &"default",
+"name": &"walk",
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_lv411"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:flip_v")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_c4h1k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:flip_v")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yhkwy"]
+_data = {
+"RESET": SubResource("Animation_c4h1k"),
+"die": SubResource("Animation_lv411")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8qrh"]
-size = Vector2(264, 38)
+size = Vector2(40, 16)
 
 [node name="Spider" type="CharacterBody2D"]
 script = ExtResource("1_sdm8n")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_6qjck")
-autoplay = "default"
-frame_progress = 0.901264
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, 29)
+position = Vector2(40, 40)
+shape = SubResource("RectangleShape2D_nu3dp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(40, 38)
+scale = Vector2(0.291971, 0.425532)
+sprite_frames = SubResource("SpriteFrames_6qjck")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.523347
+flip_v = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yhkwy")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(36, 16)
 shape = SubResource("RectangleShape2D_e8qrh")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

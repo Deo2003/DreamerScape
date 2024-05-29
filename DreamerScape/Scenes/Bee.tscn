@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyx4lc6u0kvb5"]
+[gd_scene load_steps=7 format=3 uid="uid://dyx4lc6u0kvb5"]
 
+[ext_resource type="Script" path="res://Scenes/Bee.gd" id="1_ayai2"]
 [ext_resource type="Texture2D" uid="uid://c18qxblcpu70n" path="res://Assets/Sprites/Enemies/1x/enemy_sprites.png" id="1_hs538"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2m3rl"]
@@ -28,11 +29,12 @@ animations = [{
 size = Vector2(16, 56)
 
 [node name="Bee" type="CharacterBody2D"]
+script = ExtResource("1_ayai2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s3n80")
 autoplay = "default"
-frame_progress = 0.341089
+frame_progress = 0.451794
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-8, 36)

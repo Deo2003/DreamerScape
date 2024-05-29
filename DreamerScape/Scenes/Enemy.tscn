@@ -1,0 +1,193 @@
+[gd_scene load_steps=17 format=3 uid="uid://bchaun12ro3jw"]
+
+[ext_resource type="Texture2D" uid="uid://c63gci3yxbmkl" path="res://Assets/Sprites/player.png" id="2_jf5yt"]
+
+[sub_resource type="GDScript" id="GDScript_lyfig"]
+script/source = "extends CharacterBody2D
+
+@export var speed: float = 100.0
+@export var move_range: float = 200.0
+
+var direction: int = 1
+var start_position: Vector2
+var is_dead: bool = false
+
+func _ready() -> void:
+	$EnemySprite.play(\"roam\")
+	start_position = global_position
+	$HeadArea2D.connect(\"body_entered\", Callable(self, \"_on_area_2d_body_entered\"))
+
+func _process(delta: float) -> void:
+	if is_dead:
+		return
+
+	# Move back and forth
+	global_position.x += speed * delta * direction
+	if abs(global_position.x - start_position.x) > move_range:
+		direction *= -1
+
+func _on_HeadBounced():
+	if not is_dead:
+		is_dead = true
+		$EnemySprite.play(\"die\")
+		# Optionally, make the enemy fall off the screen
+		$Tween.tween_property(self, \"global_position:y\", global_position.y + 200, 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		queue_free()
+
+
+func _on_area_2d_body_entered(body):
+	if body.name == \"Player\":
+		_on_HeadBounced()
+		body._on_EnemyBounced() # Notify Player script
+	
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfj5k"]
+atlas = ExtResource("2_jf5yt")
+region = Rect2(100, 272, 70, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu1yh"]
+atlas = ExtResource("2_jf5yt")
+region = Rect2(200, 272, 70, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wd81f"]
+atlas = ExtResource("2_jf5yt")
+region = Rect2(0, 272, 70, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0p4j"]
+atlas = ExtResource("2_jf5yt")
+region = Rect2(101, 272, 70, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifo6i"]
+atlas = ExtResource("2_jf5yt")
+region = Rect2(202, 272, 70, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnbdd"]
+atlas = ExtResource("2_jf5yt")
+region = Rect2(303, 272, 70, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7d7i"]
+atlas = ExtResource("2_jf5yt")
+region = Rect2(404, 272, 70, 68)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_844of"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfj5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu1yh")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wd81f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0p4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifo6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnbdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7d7i")
+}],
+"loop": true,
+"name": &"roam",
+"speed": 9.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3tp57"]
+size = Vector2(32, 24)
+
+[sub_resource type="Animation" id="Animation_0hdmy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+
+[sub_resource type="Animation" id="Animation_i38ub"]
+resource_name = "die"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.14159]
+}
+
+[sub_resource type="Animation" id="Animation_bnph8"]
+resource_name = "roam"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ua4s7"]
+_data = {
+"RESET": SubResource("Animation_0hdmy"),
+"die": SubResource("Animation_i38ub"),
+"roam": SubResource("Animation_bnph8")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jk6o5"]
+size = Vector2(16, 10)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = SubResource("GDScript_lyfig")
+
+[node name="EnemySprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.996078)
+position = Vector2(-17.5, -17)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_844of")
+animation = &"die"
+frame_progress = 0.0409233
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-16, -20)
+shape = SubResource("RectangleShape2D_3tp57")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ua4s7")
+}
+
+[node name="HeadArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HeadArea2D"]
+position = Vector2(-16, -27)
+shape = SubResource("RectangleShape2D_jk6o5")
+
+[connection signal="body_entered" from="HeadArea2D" to="." method="_on_area_2d_body_entered"]
