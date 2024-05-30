@@ -5,12 +5,12 @@ extends Area2D
 var is_open: bool = false
 
 func _ready() -> void:
-	$Padlock.play("locked")  # Play padlock locked animation
 	if not is_connected("body_entered", Callable(self, "_on_body_entered")):
 		connect("body_entered", Callable(self, "_on_body_entered"))
 
 func unlock() -> void:
 	$Padlock.play("unlock")  # Play padlock unlock animation
+	$Padlock.visible = false
 	is_open = true
 	$AnimatedSprite2D.play("openning")  # Play door opening animation
 

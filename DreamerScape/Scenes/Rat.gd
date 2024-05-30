@@ -15,14 +15,12 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	velocity.x = direction.x * speed
 	move_and_slide()
-	if abs( initial_position.x - global_position.x) > pace_distance:
+	if abs(global_position.x - initial_position.x) > pace_distance:
 		direction *= -1
 		$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
 
-func _on_area_2d_body_entered(body):
+func _on_body_entered(body: Node) -> void:
 	if body.name == "Player":
 		body.take_damage(damage)
 		if body.is_bouncing_on_head(self):
-			$AnimationPlayer.play("die")
-			$AnimatedSprite2D.visible = false
 			queue_free()

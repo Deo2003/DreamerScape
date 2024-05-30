@@ -5,8 +5,13 @@ var door: Area2D
 var chime_player: AudioStreamPlayer
 
 func _ready() -> void:
-	door = get_node("Door")
-	var player = get_node("Player")
+	door = get_node_or_null("Door")
+	if not door:
+		print("Error: Door node not found!")
+	else:
+		door.connect("body_entered", Callable(self, "_on_body_entered"))
+
+	var player = get_node_or_null("Player")
 	if player:
 		player.connect("player_entered_hiding", Callable(self, "_on_Player_player_entered_hiding"))
 		player.connect("player_exited_hiding", Callable(self, "_on_Player_player_exited_hiding"))
