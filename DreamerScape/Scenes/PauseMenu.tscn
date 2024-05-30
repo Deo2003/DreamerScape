@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8segoy02ga8l"]
+[gd_scene load_steps=8 format=3 uid="uid://b8segoy02ga8l"]
 
+[ext_resource type="Texture2D" uid="uid://bg7lg108i3ivc" path="res://Assets/Slideshow/1x/Slideshow_bg.png" id="1_0rcdy"]
 [ext_resource type="Script" path="res://Scenes/PauseMenu.gd" id="1_25pnl"]
 [ext_resource type="FontFile" uid="uid://b5g4m6row0mtc" path="res://Assets/Fonts/Blockstepped 3D.ttf" id="2_gt7nt"]
 [ext_resource type="Texture2D" uid="uid://bji6i4o1dwpqh" path="res://Assets/UI/1x/unmute.png" id="4_unkdh"]
@@ -18,36 +19,69 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-layout_mode = 0
-offset_left = 728.0
-offset_top = 8.0
-offset_right = 1320.0
-offset_bottom = 1072.0
+[node name="Background" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -959.0
+offset_top = -540.0
+offset_right = 959.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0rcdy")
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel"]
 layout_mode = 2
+offset_left = 536.0
+offset_top = 96.0
+offset_right = 1392.0
+offset_bottom = 246.0
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.462745, 0.615686, 0.721569, 1)
 theme_override_fonts/font = ExtResource("2_gt7nt")
 theme_override_font_sizes/font_size = 128
-text = "PAUSED"
+text = "PAUSE MENU"
 
-[node name="Mute" type="TextureButton" parent="Panel/VBoxContainer"]
+[node name="Mute" type="TextureButton" parent="Panel"]
 layout_mode = 2
+offset_left = 592.0
+offset_top = 336.0
+offset_right = 839.0
+offset_bottom = 585.0
 size_flags_horizontal = 4
 size_flags_vertical = 8
 texture_normal = ExtResource("4_unkdh")
 texture_pressed = ExtResource("5_xl1fe")
 
-[node name="Home" type="TextureButton" parent="Panel/VBoxContainer"]
+[node name="Home" type="TextureButton" parent="Panel"]
 layout_mode = 2
+offset_left = 1072.0
+offset_top = 328.0
+offset_right = 1319.0
+offset_bottom = 577.0
 size_flags_horizontal = 4
 texture_normal = ExtResource("6_wf73r")
 
-[node name="Quit" type="TextureButton" parent="Panel/VBoxContainer"]
+[node name="Quit" type="TextureButton" parent="Panel"]
 layout_mode = 2
+offset_left = 848.0
+offset_top = 672.0
+offset_right = 1074.0
+offset_bottom = 900.0
 size_flags_horizontal = 4
 texture_normal = ExtResource("7_h6kw6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = -752.0
+offset_top = -104.0
+offset_right = -160.0
+offset_bottom = 960.0
 
 [node name="Close" type="TextureButton" parent="Panel"]
 layout_mode = 0
@@ -58,7 +92,7 @@ offset_bottom = 268.0
 scale = Vector2(0.195826, 0.195826)
 texture_normal = ExtResource("7_h6kw6")
 
-[connection signal="pressed" from="Panel/VBoxContainer/Mute" to="." method="_on_mute_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/Home" to="." method="_on_home_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Panel/Mute" to="." method="_on_mute_pressed"]
+[connection signal="pressed" from="Panel/Home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="Panel/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Panel/Close" to="." method="_on_close_pressed"]

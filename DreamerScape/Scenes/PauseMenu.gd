@@ -3,9 +3,9 @@ extends Control
 
 func _ready() -> void:
 	self.visible = false  # Initially hide the pause menu
-	$Panel/VBoxContainer/Mute.connect("pressed", Callable(self, "_on_mute_pressed"))
-	$Panel/VBoxContainer/Home.connect("pressed", Callable(self, "_on_home_pressed"))
-	$Panel/VBoxContainer/Quit.connect("pressed", Callable(self, "_on_quit_pressed"))
+	$Panel/Mute.connect("pressed", Callable(self, "_on_mute_pressed"))
+	$Panel/Home.connect("pressed", Callable(self, "_on_home_pressed"))
+	$Panel/Quit.connect("pressed", Callable(self, "_on_quit_pressed"))
 
 func _input(event):
 	if event.is_action_pressed("pause"):
