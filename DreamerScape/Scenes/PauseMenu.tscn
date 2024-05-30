@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://hcnkth5og6n5" path="res://Assets/UI/1x/quit.png" id="7_h6kw6"]
 
 [node name="PauseMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_25pnl")
@@ -48,6 +49,16 @@ layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("7_h6kw6")
 
+[node name="Close" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 1832.0
+offset_top = 40.0
+offset_right = 2058.0
+offset_bottom = 268.0
+scale = Vector2(0.195826, 0.195826)
+texture_normal = ExtResource("7_h6kw6")
+
 [connection signal="pressed" from="Panel/VBoxContainer/Mute" to="." method="_on_mute_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Home" to="." method="_on_home_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Panel/Close" to="." method="_on_close_pressed"]
