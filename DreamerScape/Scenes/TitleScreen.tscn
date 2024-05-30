@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bnc4xssud5nxw"]
+[gd_scene load_steps=20 format=3 uid="uid://bnc4xssud5nxw"]
 
 [ext_resource type="Script" path="res://Scenes/TitleScreen.gd" id="1_ym85r"]
 [ext_resource type="Texture2D" uid="uid://bkdvt0ibprwpm" path="res://Assets/TitleScreen/1x/Asset 7.png" id="2_olvht"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://byyy26r43d0rv" path="res://Assets/TitleScreen/1x/Asset 9.png" id="12_f4ryc"]
 [ext_resource type="Texture2D" uid="uid://b8238ln5jbh5l" path="res://Assets/TitleScreen/1x/play_button.png" id="12_kcbe6"]
 [ext_resource type="AudioStream" uid="uid://be63usmwrgvjw" path="res://Assets/Audio/Music/DreamerScapeopeningtheme.ogg" id="13_snhmu"]
+[ext_resource type="AudioStream" uid="uid://bma1x8fihtc3g" path="res://Assets/Audio/Effects/Button_hover.ogg" id="14_u3olk"]
+[ext_resource type="AudioStream" uid="uid://xsi6n6iepeh6" path="res://Assets/Audio/Effects/Button_click.ogg" id="15_80p26"]
 
 [sub_resource type="Animation" id="Animation_2birm"]
 resource_name = "Bounce"
@@ -357,6 +359,13 @@ color = Color(0.227451, 0.501961, 0.678431, 1)
 [node name="Theme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_snhmu")
 
+[node name="hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_u3olk")
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_80p26")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="mouse_entered" from="PlayButton" to="." method="_on_play_button_mouse_entered"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="finished" from="Theme" to="." method="_on_theme_finished"]

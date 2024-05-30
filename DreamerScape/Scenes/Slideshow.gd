@@ -48,6 +48,7 @@ func start_tutorial() -> void:
 	#get_tree().change_scene_to_file("res://Scenes/TutorialScene.tscn")
 
 func _on_skip_button_pressed() -> void:
+	$click.play()
 	start_tutorial()
 
 func _on_timer_timeout() -> void:
@@ -76,3 +77,7 @@ func change_scene_with_loading(screen_path: String, next_scene_path: String):
 		get_tree().root.add_child(loading_instance)
 	else:
 		print("Error loading scene: ", screen_path)
+
+
+func _on_skip_button_mouse_entered():
+	$hover.play()

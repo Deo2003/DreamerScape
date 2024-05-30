@@ -16,6 +16,7 @@ func _ready() -> void:
 		$PlayButton.connect("pressed", Callable(self, "_on_play_button_pressed"))
 
 func _on_play_button_pressed():
+	$click.play()
 	change_scene_with_loading("res://Scenes/LoadingScreen.tscn", "res://Scenes/SlideshowScene.tscn")
 	#get_tree().change_scene_to_file("res://Scenes/SlideshowScene.tscn")
 
@@ -36,3 +37,7 @@ func change_scene_with_loading(screen_path: String, next_scene_path: String):
 		loading_instance.next_scene = next_scene_path
 	else:
 		print("Error loading scene: ", screen_path)
+
+
+func _on_play_button_mouse_entered():
+	$hover.play()

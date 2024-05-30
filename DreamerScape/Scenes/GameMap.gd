@@ -35,6 +35,7 @@ func _ready() -> void:
 		button.connect("mouse_exited", Callable(self, "_on_location_button_mouse_exited"))
 
 func _on_location_button_pressed(index: int) -> void:
+	$click.play()
 	var scene_paths = [
 		"res://Scenes/TheOutskirts.tscn",
 		"res://Scenes/GrayMountains.tscn",
@@ -47,6 +48,7 @@ func _on_location_button_pressed(index: int) -> void:
 	get_tree().change_scene_to_file(scene_paths[index])
 
 func _on_location_button_mouse_entered(index: int) -> void:
+	$hover.play()
 	$HoverLabel.text = hover_labels[index]
 	$HoverLabel.visible = true
 	# Adjust the label position to be near the cursor or button
