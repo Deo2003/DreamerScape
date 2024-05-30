@@ -72,7 +72,7 @@ func change_scene_with_loading(screen_path: String, next_scene_path: String):
 	var loading_scene = ResourceLoader.load(screen_path)
 	if loading_scene:
 		var loading_instance = loading_scene.instantiate()
-		get_tree().root.add_child(loading_instance)
 		loading_instance.next_scene = next_scene_path
+		get_tree().root.add_child(loading_instance)
 	else:
 		print("Error loading scene: ", screen_path)

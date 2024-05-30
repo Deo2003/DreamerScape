@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8segoy02ga8l"]
+
+[ext_resource type="Texture2D" uid="uid://bg7lg108i3ivc" path="res://Assets/Slideshow/1x/Slideshow_bg.png" id="1_0rcdy"]
+[ext_resource type="FontFile" uid="uid://b5g4m6row0mtc" path="res://Assets/Fonts/Blockstepped 3D.ttf" id="2_gt7nt"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(968, 536)
+texture = ExtResource("1_0rcdy")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 728.0
+offset_top = 8.0
+offset_right = 1320.0
+offset_bottom = 1072.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gt7nt")
+theme_override_font_sizes/font_size = 128
+text = "PAUSED"
+
+[node name="HSlider" type="HSlider" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+flat = true
+
+[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
