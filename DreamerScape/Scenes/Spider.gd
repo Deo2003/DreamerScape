@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed: float = 50.0
-@export var pace_distance: float = 5.0
+@export var pace_distance: float = 30.0
 @export var damage: int = 1
 
 var direction: Vector2 = Vector2.LEFT
@@ -19,10 +19,8 @@ func _physics_process(delta: float) -> void:
 		direction *= -1
 		$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
 
-func _on_area_2d_body_entered(body):
+func _on_body_entered(body: Node) -> void:
 	if body.name == "Player":
 		body.take_damage(damage)
 		if body.is_bouncing_on_head(self):
-			$AnimationPlayer.play("die")
-			$AnimatedSprite2D.visible = false
 			queue_free()

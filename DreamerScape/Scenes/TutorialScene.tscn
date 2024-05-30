@@ -16439,10 +16439,6 @@ volume_db = -5.0
 [node name="Player" parent="." instance=ExtResource("3_hr2fb")]
 position = Vector2(-3328, -1560)
 
-[node name="Spider" parent="." instance=ExtResource("15_ycnck")]
-position = Vector2(-456, 120)
-rotation = 3.11611
-
 [node name="Fragment" parent="." instance=ExtResource("10_v7wsa")]
 position = Vector2(-1712, 16)
 
@@ -16472,3 +16468,6 @@ position = Vector2(720, -368)
 
 [node name="Fragment10" parent="." instance=ExtResource("10_v7wsa")]
 position = Vector2(976, -368)
+
+[node name="Spider" parent="." instance=ExtResource("15_ycnck")]
+position = Vector2(-544, 56)

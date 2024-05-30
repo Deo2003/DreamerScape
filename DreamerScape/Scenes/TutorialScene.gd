@@ -3,7 +3,6 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimationPlayer.play("clouds")
 	$AudioStreamPlayer.play()
 	$Fragment/AnimationPlayer.play("bounce")
 	var player = get_node("Player")
