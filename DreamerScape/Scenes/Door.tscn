@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bbenhwjpjnua1"]
+[gd_scene load_steps=15 format=3 uid="uid://bbenhwjpjnua1"]
 
 [ext_resource type="Script" path="res://Scenes/Door.gd" id="1_4vohx"]
 [ext_resource type="Texture2D" uid="uid://b103v5ub584cb" path="res://Assets/Doors/1x/door1.png" id="2_v0kac"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://du7wuw5muoyka" path="res://Assets/Doors/1x/door7.png" id="8_gtd65"]
 [ext_resource type="Texture2D" uid="uid://p2yx4w5nc68h" path="res://Assets/Doors/1x/lock1.png" id="9_hyo13"]
 [ext_resource type="Texture2D" uid="uid://dnm2br46cer27" path="res://Assets/Doors/1x/lock2.png" id="10_nmanw"]
+[ext_resource type="AudioStream" uid="uid://clk0gyn8vf6af" path="res://Assets/Audio/Effects/dooropen.ogg" id="11_1iqul"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_syuws"]
 animations = [{
@@ -49,9 +50,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("10_nmanw")
 }],
-"loop": true,
+"loop": false,
 "name": &"unlock",
-"speed": 2.5
+"speed": 1.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fu086"]
@@ -76,5 +77,8 @@ animation = &"unlock"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-68, -124)
 shape = SubResource("RectangleShape2D_fu086")
+
+[node name="open" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_1iqul")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

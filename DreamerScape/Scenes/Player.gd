@@ -16,6 +16,7 @@ var is_on_ladder: bool = false
 var current_ladder: Area2D = null
 var start_position: Vector2
 var lives: int
+var is_walking: bool = false
 
 func _ready() -> void:
 	lives = max_lives
@@ -41,6 +42,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Check if the player has fallen off the screen
 	if global_position.y > fall_threshold:
+		$off_screen.play()
 		reset_position()
 	
 	velocity.y += gravity * delta
@@ -52,25 +54,32 @@ func handle_movement() -> void:
 		speed = run_speed
 
 	velocity.x = 0
-	if Input.is_action_pressed("ui_right"):
-		velocity.x += speed
-		$PlayerSprite.flip_h = false  # Ensure the sprite is facing right
+	if Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left"):
+		if Input.is_action_pressed("ui_right"):
+			velocity.x += speed
+			$PlayerSprite.flip_h = false  # Ensure the sprite is facing right
+		elif Input.is_action_pressed("ui_left"):
+			velocity.x -= speed
+			$PlayerSprite.flip_h = true  # Ensure the sprite is facing left
+		
 		if not is_jumping and not is_falling:
 			if speed == walk_speed:
 				$PlayerSprite.play("walk")  # Play walk animation
 			elif speed == run_speed:
 				$PlayerSprite.play("run")  # Play run animation
-	elif Input.is_action_pressed("ui_left"):
-		velocity.x -= speed
-		$PlayerSprite.flip_h = true  # Ensure the sprite is facing left
-		if not is_jumping and not is_falling:
-			if speed == walk_speed:
-				$PlayerSprite.play("walk")  # Play walk animation
-			elif speed == run_speed:
-				$PlayerSprite.play("run")  # Play run animation
+			
+			if not is_walking:
+				$footsteps.play()
+				is_walking = true
+		else:
+			$footsteps.stop()
+			is_walking = false
 	else:
 		if is_on_floor() and not is_jumping and not is_falling:
 			$PlayerSprite.play("idle")  # Play idle animation
+		
+		$footsteps.stop()
+		is_walking = false
 
 func handle_jump() -> void:
 	if is_on_floor() and Input.is_action_just_pressed("ui_jump"):
@@ -144,4 +153,3 @@ func die() -> void:
 
 func is_bouncing_on_head(enemy: Node) -> bool:
 	return velocity.y > 0 and global_position.y < enemy.global_position.y
-

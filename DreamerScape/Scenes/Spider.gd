@@ -23,4 +23,5 @@ func _on_body_entered(body: Node) -> void:
 	if body.name == "Player":
 		body.take_damage(damage)
 		if body.is_bouncing_on_head(self):
+			$die.play()
 			queue_free()

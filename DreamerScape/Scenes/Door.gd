@@ -10,8 +10,9 @@ func _ready() -> void:
 
 func unlock() -> void:
 	$Padlock.play("unlock")  # Play padlock unlock animation
-	$Padlock.visible = false
 	is_open = true
+	$Padlock.visible = false
+	$open.play()
 	$AnimatedSprite2D.play("openning")  # Play door opening animation
 
 func _on_body_entered(body: Node) -> void:

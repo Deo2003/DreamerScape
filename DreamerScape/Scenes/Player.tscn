@@ -1,8 +1,10 @@
-[gd_scene load_steps=39 format=3 uid="uid://dk1dvpt2dsehp"]
+[gd_scene load_steps=41 format=3 uid="uid://dk1dvpt2dsehp"]
 
 [ext_resource type="Script" path="res://Scenes/Player.gd" id="1_lk0aw"]
 [ext_resource type="Texture2D" uid="uid://b2dti4ys0fbsn" path="res://Assets/Sprites/Player/1x/player_spritesheet.png" id="2_dj4du"]
 [ext_resource type="AudioStream" uid="uid://cdb7y8nbwxlgv" path="res://Assets/Audio/Effects/jump.ogg" id="3_5arvm"]
+[ext_resource type="AudioStream" uid="uid://cac5gnsl8v2we" path="res://Assets/Audio/Effects/footsteps.ogg" id="4_p8big"]
+[ext_resource type="AudioStream" uid="uid://d2bjfnv4os8de" path="res://Assets/Audio/Effects/Offscreen.ogg" id="5_12nim"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l1wre"]
 atlas = ExtResource("2_dj4du")
@@ -345,3 +347,14 @@ zoom = Vector2(3, 3)
 
 [node name="jump_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_5arvm")
+volume_db = -5.0
+
+[node name="footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_p8big")
+
+[node name="running" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_p8big")
+pitch_scale = 0.53
+
+[node name="off_screen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_12nim")
