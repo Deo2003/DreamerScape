@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b421l4hwvvloa"]
+[gd_scene load_steps=25 format=3 uid="uid://b421l4hwvvloa"]
 
 [ext_resource type="Script" path="res://Scenes/TutorialScene.gd" id="1_pkgb2"]
 [ext_resource type="Texture2D" uid="uid://dreif8vka4bdl" path="res://Assets/Parallax/1x/sky.png" id="2_xxhmk"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://tx8ig4qcvih5" path="res://Assets/Audio/Effects/Collected.ogg" id="13_p1qm7"]
 [ext_resource type="PackedScene" uid="uid://bbenhwjpjnua1" path="res://Scenes/Door.tscn" id="14_k75h2"]
 [ext_resource type="PackedScene" uid="uid://bripc61xfh75o" path="res://Scenes/Spider.tscn" id="15_ycnck"]
+[ext_resource type="PackedScene" uid="uid://b8segoy02ga8l" path="res://Scenes/PauseMenu.tscn" id="16_ttwqw"]
 
 [sub_resource type="Animation" id="Animation_vmmt4"]
 length = 0.001
@@ -16471,5 +16472,7 @@ position = Vector2(976, -368)
 
 [node name="Spider" parent="." instance=ExtResource("15_ycnck")]
 position = Vector2(-544, 56)
+
+[node name="PauseMenu" parent="." instance=ExtResource("16_ttwqw")]
 
 [editable path="GameManager/Door"]

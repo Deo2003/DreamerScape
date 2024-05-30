@@ -5,6 +5,8 @@ var door: Area2D
 var chime_player: AudioStreamPlayer
 
 func _ready() -> void:
+	var pause_menu = preload("res://Scenes/PauseMenu.tscn").instantiate()
+	get_tree().root.add_child(pause_menu)
 	door = get_node_or_null("Door")
 	if not door:
 		print("Error: Door node not found!")

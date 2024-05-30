@@ -1,15 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8segoy02ga8l"]
+[gd_scene load_steps=7 format=3 uid="uid://b8segoy02ga8l"]
 
-[ext_resource type="Texture2D" uid="uid://bg7lg108i3ivc" path="res://Assets/Slideshow/1x/Slideshow_bg.png" id="1_0rcdy"]
+[ext_resource type="Script" path="res://Scenes/PauseMenu.gd" id="1_25pnl"]
 [ext_resource type="FontFile" uid="uid://b5g4m6row0mtc" path="res://Assets/Fonts/Blockstepped 3D.ttf" id="2_gt7nt"]
+[ext_resource type="Texture2D" uid="uid://bji6i4o1dwpqh" path="res://Assets/UI/1x/unmute.png" id="4_unkdh"]
+[ext_resource type="Texture2D" uid="uid://bp026x8ea5uyr" path="res://Assets/UI/1x/mute.png" id="5_xl1fe"]
+[ext_resource type="Texture2D" uid="uid://cmq0gprr7nuh6" path="res://Assets/UI/1x/home.png" id="6_wf73r"]
+[ext_resource type="Texture2D" uid="uid://hcnkth5og6n5" path="res://Assets/UI/1x/quit.png" id="7_h6kw6"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(968, 536)
-texture = ExtResource("1_0rcdy")
+script = ExtResource("1_25pnl")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -25,19 +26,28 @@ offset_bottom = 1072.0
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_gt7nt")
 theme_override_font_sizes/font_size = 128
 text = "PAUSED"
 
-[node name="HSlider" type="HSlider" parent="Panel/VBoxContainer"]
+[node name="Mute" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("4_unkdh")
+texture_pressed = ExtResource("5_xl1fe")
 
-[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+[node name="Home" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
-flat = true
+size_flags_horizontal = 4
+texture_normal = ExtResource("6_wf73r")
 
-[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+[node name="Quit" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("7_h6kw6")
 
-[node name="Button3" type="Button" parent="Panel/VBoxContainer"]
-layout_mode = 2
+[connection signal="pressed" from="Panel/VBoxContainer/Mute" to="." method="_on_mute_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
