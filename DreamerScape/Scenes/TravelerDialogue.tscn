@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3hr5bgpt7td"]
+
+[ext_resource type="Script" path="res://Scenes/DialogueSystem.gd" id="1_1xujx"]
+[ext_resource type="Texture2D" uid="uid://baej3is5eukou" path="res://Assets/UI/1x/dialogue1.png" id="2_uw3da"]
+[ext_resource type="FontFile" uid="uid://b5g4m6row0mtc" path="res://Assets/Fonts/Blockstepped 3D.ttf" id="3_igaps"]
+[ext_resource type="FontFile" uid="uid://sia1vmykl6p7" path="res://Assets/Fonts/Blockstepped.ttf" id="3_n6r0t"]
+
+[node name="DialogueSystem" type="CanvasLayer"]
+script = ExtResource("1_1xujx")
+npc_image = ExtResource("2_uw3da")
+dialogue = Array[String](["\"Wow, hello, a Dreamer! Welcome to my air balloon.\"", "\"I need your help to rid my dreams of nightmares.\"", "\"I'll pay you handsomely. Are you ready to take on the challenge?\""])
+next_scene = "res://Scenes/Level1.tscn"
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 296.0
+offset_top = 304.0
+offset_right = 1712.0
+offset_bottom = 1016.0
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 920.0
+offset_bottom = 135.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 456.0
+offset_right = 848.0
+offset_bottom = 552.0
+theme_override_colors/font_color = Color(0.992157, 0.796078, 0.796078, 1)
+theme_override_fonts/font = ExtResource("3_n6r0t")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 528.0
+offset_right = 271.0
+offset_bottom = 590.0
+theme_override_colors/font_color = Color(0.541176, 0.298039, 0.352941, 1)
+theme_override_colors/font_hover_color = Color(0.789919, 0.515756, 0.572268, 1)
+theme_override_fonts/font = ExtResource("3_igaps")
+theme_override_font_sizes/font_size = 36
+text = "NEXT
+"
+flat = true
+
+[node name="AcceptButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 536.0
+offset_right = 1276.0
+offset_bottom = 585.0
+theme_override_colors/font_color = Color(0.572549, 0.34902, 0.4, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.788235, 0.517647, 0.572549, 1)
+theme_override_fonts/font = ExtResource("3_igaps")
+theme_override_font_sizes/font_size = 36
+text = "ACCEPT
+"
+flat = true
+
+[connection signal="pressed" from="Panel/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="Panel/AcceptButton" to="." method="_on_accept_button_pressed"]

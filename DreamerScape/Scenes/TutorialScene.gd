@@ -5,7 +5,6 @@ extends Node2D
 func _ready():
 	var pause_menu = preload("res://Scenes/PauseMenu.tscn").instantiate()
 	get_tree().root.add_child(pause_menu)
-	$AudioStreamPlayer.play()
 	$Fragment/AnimationPlayer.play("bounce")
 	var player = get_node("Player")
 	if player:

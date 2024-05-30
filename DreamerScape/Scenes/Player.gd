@@ -23,7 +23,12 @@ func _ready() -> void:
 	$RayCast2D.enabled = true
 	$PlayerSprite.play("idle")  # Start with the idle animation
 	$Camera2D.make_current()  # Correct usage without assignment
-	start_position = get_node("/root/TutorialScene/PlayerStart").global_position
+	if get_tree().current_scene.name == "TutorialScene":
+		start_position = get_node("/root/TutorialScene/PlayerStart").global_position
+	elif get_tree().current_scene.name == "TheOutskirts":
+		start_position = get_node("/root/Outskirts/PlayerStart").global_position
+	elif get_tree().current_scene.name == "Level1":
+		start_position = get_node("/root/Level1/PlayerStart").global_position
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
