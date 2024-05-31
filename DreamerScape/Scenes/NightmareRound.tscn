@@ -1,0 +1,112 @@
+[gd_scene load_steps=15 format=3 uid="uid://0abyu4ap66pm"]
+
+[ext_resource type="Script" path="res://Scenes/NightmareRound.gd" id="1_i6g5q"]
+[ext_resource type="Texture2D" uid="uid://cqdidslk6pmw2" path="res://Assets/Backgrounds/1x/nightmare_bg.png" id="1_yqar0"]
+[ext_resource type="Texture2D" uid="uid://cy2t5taovmu3f" path="res://Assets/nightmare_round/1x/pad.png" id="2_e021m"]
+[ext_resource type="Texture2D" uid="uid://bud1wlhxgsemc" path="res://Assets/Sprites/Enemies/1x/nm1.png" id="2_xy555"]
+[ext_resource type="Texture2D" uid="uid://cujbvks1pg8db" path="res://Assets/Sprites/Enemies/1x/nm2.png" id="3_bn2wk"]
+[ext_resource type="Texture2D" uid="uid://cxoii76jw3anh" path="res://Assets/nightmare_round/1x/note_c.png" id="3_tryi1"]
+[ext_resource type="Texture2D" uid="uid://bc7t7wc3icjk" path="res://Assets/nightmare_round/1x/note_d.png" id="4_yiygs"]
+[ext_resource type="Texture2D" uid="uid://bwd386g1su42e" path="res://Assets/nightmare_round/1x/note_e.png" id="5_nco7q"]
+[ext_resource type="Texture2D" uid="uid://i6y1viclxaym" path="res://Assets/nightmare_round/1x/note_f.png" id="6_5tsu5"]
+[ext_resource type="Texture2D" uid="uid://tqwrvvuqfca4" path="res://Assets/nightmare_round/1x/note_g.png" id="7_yb4fs"]
+[ext_resource type="Texture2D" uid="uid://b0msy33k0bxam" path="res://Assets/nightmare_round/1x/note_a.png" id="8_v0wh5"]
+[ext_resource type="Texture2D" uid="uid://buitk7yjdsei5" path="res://Assets/nightmare_round/1x/note_b.png" id="9_1xmrp"]
+[ext_resource type="AudioStream" uid="uid://23qt3dv4bx1" path="res://Assets/Audio/Music/Thetravellernightmare.ogg" id="12_nq2ey"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_51bya"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xy555")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bn2wk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.75
+}]
+
+[node name="NightmareRound" type="Node2D"]
+script = ExtResource("1_i6g5q")
+
+[node name="NightmareBg" type="Sprite2D" parent="."]
+position = Vector2(960, 536)
+texture = ExtResource("1_yqar0")
+
+[node name="NightmareMonster" type="AnimatedSprite2D" parent="."]
+position = Vector2(576, 560)
+scale = Vector2(3.30882, 3.71667)
+sprite_frames = SubResource("SpriteFrames_51bya")
+autoplay = "default"
+frame_progress = 0.339563
+
+[node name="Pad" type="Sprite2D" parent="."]
+position = Vector2(1431.5, 674.5)
+texture = ExtResource("2_e021m")
+
+[node name="ButtonC" type="Button" parent="."]
+offset_left = 1191.5
+offset_top = 714.5
+offset_right = 1357.5
+offset_bottom = 880.5
+icon = ExtResource("3_tryi1")
+flat = true
+
+[node name="ButtonD" type="Button" parent="."]
+offset_left = 1119.5
+offset_top = 570.5
+offset_right = 1285.5
+offset_bottom = 736.5
+icon = ExtResource("4_yiygs")
+flat = true
+
+[node name="ButtonE" type="Button" parent="."]
+offset_left = 1191.5
+offset_top = 426.5
+offset_right = 1357.5
+offset_bottom = 592.5
+icon = ExtResource("5_nco7q")
+flat = true
+
+[node name="ButtonF" type="Button" parent="."]
+offset_left = 1343.5
+offset_top = 370.5
+offset_right = 1509.5
+offset_bottom = 536.5
+icon = ExtResource("6_5tsu5")
+
+[node name="ButtonG" type="Button" parent="."]
+offset_left = 1503.5
+offset_top = 426.5
+offset_right = 1669.5
+offset_bottom = 592.5
+icon = ExtResource("7_yb4fs")
+
+[node name="ButtonA" type="Button" parent="."]
+offset_left = 1583.5
+offset_top = 578.5
+offset_right = 1749.5
+offset_bottom = 741.5
+icon = ExtResource("8_v0wh5")
+
+[node name="ButtonB" type="Button" parent="."]
+offset_left = 1503.5
+offset_top = 714.5
+offset_right = 1669.5
+offset_bottom = 880.5
+icon = ExtResource("9_1xmrp")
+
+[node name="theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_nq2ey")
+volume_db = -10.0
+autoplay = true
+
+[connection signal="pressed" from="ButtonC" to="." method="_on_button_c_pressed"]
+[connection signal="pressed" from="ButtonD" to="." method="_on_button_d_pressed"]
+[connection signal="pressed" from="ButtonE" to="." method="_on_button_e_pressed"]
+[connection signal="pressed" from="ButtonF" to="." method="_on_button_f_pressed"]
+[connection signal="pressed" from="ButtonG" to="." method="_on_button_g_pressed"]
+[connection signal="pressed" from="ButtonA" to="." method="_on_button_a_pressed"]
+[connection signal="pressed" from="ButtonB" to="." method="_on_button_b_pressed"]
