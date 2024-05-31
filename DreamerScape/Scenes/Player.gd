@@ -1,3 +1,4 @@
+# Player.gd
 extends CharacterBody2D
 
 @export var walk_speed: float = 150.0
@@ -21,14 +22,13 @@ var is_walking: bool = false
 func _ready() -> void:
 	lives = max_lives
 	$RayCast2D.enabled = true
-	$PlayerSprite.play("idle")  # Start with the idle animation
-	$Camera2D.make_current()  # Correct usage without assignment
-	if get_tree().current_scene.name == "TutorialScene":
-		start_position = get_node("/root/TutorialScene/PlayerStart").global_position
-	elif get_tree().current_scene.name == "TheOutskirts":
-		start_position = get_node("/root/Outskirts/PlayerStart").global_position
-	elif get_tree().current_scene.name == "Level1":
-		start_position = get_node("/root/Level1/PlayerStart").global_position
+	$PlayerSprite.play("idle")  # Assuming you have an idle animation
+	$Camera2D.make_current()
+	
+	start_position = global_position
+	var ui_layer = get_parent().get_node("UILayer")
+	ui_layer.update_lives()
+	ui_layer.update_fragment_counter()
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
@@ -45,7 +45,6 @@ func _physics_process(delta: float) -> void:
 	handle_jump()
 	handle_hiding()
 	
-	# Check if the player has fallen off the screen
 	if global_position.y > fall_threshold:
 		$off_screen.play()
 		reset_position()
@@ -147,8 +146,8 @@ func _on_Ladder_player_exited_ladder(ladder: Area2D) -> void:
 
 func take_damage(amount: int) -> void:
 	lives -= amount
-	if lives <= 0:
-		die()
+	var ui_layer = get_parent().get_node("UILayer")
+	ui_layer.lose_life()
 
 func die() -> void:
 	if get_tree().current_scene.name == "TutorialScene":
