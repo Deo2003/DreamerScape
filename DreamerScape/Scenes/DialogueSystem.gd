@@ -19,7 +19,8 @@ func _ready() -> void:
 
 func _on_accept_button_pressed():
 	self.visible = false
-	get_tree().change_scene_to_file(next_scene)
+	#get_tree().change_scene_to_file(next_scene)
+	change_scene_with_loading("res://Scenes/LoadingScreen.tscn", "res://Scenes/Level1.tscn")
 
 
 func _on_next_button_pressed():
@@ -29,3 +30,12 @@ func _on_next_button_pressed():
 	else:
 		$Panel/NextButton.disabled = true
 		$Panel/AcceptButton.disabled = false
+
+func change_scene_with_loading(screen_path: String, next_scene_path: String):
+	var loading_scene = ResourceLoader.load(screen_path)
+	if loading_scene:
+		var loading_instance = loading_scene.instantiate()
+		loading_instance.next_scene = next_scene_path
+		get_tree().root.add_child(loading_instance)
+	else:
+		print("Error loading scene: ", screen_path)

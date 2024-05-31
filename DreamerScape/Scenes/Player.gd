@@ -26,9 +26,10 @@ func _ready() -> void:
 	$Camera2D.make_current()
 	
 	start_position = global_position
-	var ui_layer = get_parent().get_node("UILayer")
-	ui_layer.update_lives()
-	ui_layer.update_fragment_counter()
+	if get_tree().current_scene.name == "Level1":
+		var ui_layer = get_parent().get_node("UILayer")
+		ui_layer.update_lives()
+		ui_layer.update_fragment_counter()
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):

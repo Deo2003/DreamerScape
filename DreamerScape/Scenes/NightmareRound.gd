@@ -1,8 +1,8 @@
 # NightmareRound.gd
 extends Node2D
 
-@export var correct_sequence: Array[String] = ["C", "D", "E", "F", "G", "A", "B"]  # Example correct sequence
-var player_sequence: Array[String] = []
+@export var correct_sequence: Array[String] = ["E", "G", "A", "B", "C", "B", "A", "G", "E"]  # Example correct sequence
+var player_sequence: Array[String] = [] 
 var note_sounds: Dictionary = {}
 
 func _ready() -> void:
@@ -65,7 +65,7 @@ func play_note_sound(note: String) -> void:
 
 func win_level() -> void:
 	print("You have vanquished the nightmare!")
-	get_tree().change_scene("res://Scenes/LevelComplete.tscn")
+	get_tree().change_scene_to_file("res://Scenes/LevelComplete.tscn")
 
 func lose_level() -> void:
 	print("Incorrect sequence. Try again.")

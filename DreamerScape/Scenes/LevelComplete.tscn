@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsoulf5aepkl7"]
+
+[ext_resource type="Script" path="res://LevelComplete.gd" id="1_sitqy"]
+[ext_resource type="Texture2D" uid="uid://bg7lg108i3ivc" path="res://Assets/Slideshow/1x/Slideshow_bg.png" id="2_04ice"]
+[ext_resource type="Texture2D" uid="uid://clgl06rdhvwn5" path="res://Assets/UI/1x/star_placeholder.png" id="2_uhe4r"]
+[ext_resource type="Texture2D" uid="uid://brn5re3itltn5" path="res://Assets/UI/1x/star.png" id="3_uvcfi"]
+[ext_resource type="Texture2D" uid="uid://otavv6ad7eh8" path="res://Assets/UI/1x/next.png" id="4_ttrgc"]
+[ext_resource type="FontFile" uid="uid://sia1vmykl6p7" path="res://Assets/Fonts/Blockstepped.ttf" id="5_gj3ac"]
+
+[node name="LevelComplete" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sitqy")
+
+[node name="SlideshowBg" type="Sprite2D" parent="."]
+position = Vector2(960, 544)
+texture = ExtResource("2_04ice")
+
+[node name="StarPlaceholder" type="Sprite2D" parent="."]
+position = Vector2(480, 288)
+texture = ExtResource("2_uhe4r")
+
+[node name="StarPlaceholder2" type="Sprite2D" parent="."]
+position = Vector2(960, 408)
+texture = ExtResource("2_uhe4r")
+
+[node name="StarPlaceholder3" type="Sprite2D" parent="."]
+position = Vector2(1464, 280)
+texture = ExtResource("2_uhe4r")
+
+[node name="Star1" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 152.0
+offset_right = 620.0
+offset_bottom = 427.0
+texture = ExtResource("3_uvcfi")
+
+[node name="Star2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 816.0
+offset_top = 272.0
+offset_right = 1108.0
+offset_bottom = 547.0
+texture = ExtResource("3_uvcfi")
+
+[node name="Star3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1328.0
+offset_top = 144.0
+offset_right = 1620.0
+offset_bottom = 419.0
+texture = ExtResource("3_uvcfi")
+
+[node name="TimeLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 728.0
+offset_right = 1000.0
+offset_bottom = 751.0
+theme_override_fonts/font = ExtResource("5_gj3ac")
+theme_override_font_sizes/font_size = 36
+
+[node name="NextButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 800.0
+offset_right = 1095.0
+offset_bottom = 1057.0
+icon = ExtResource("4_ttrgc")
+flat = true
+
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
