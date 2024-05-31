@@ -3,6 +3,7 @@ extends Node
 var fragment_count: int = 0
 var door: Area2D
 var chime_player: AudioStreamPlayer
+signal fragment_collected
 
 func _ready() -> void:
 	$theme.play()
@@ -28,8 +29,10 @@ func _on_fragment_collected() -> void:
 	fragment_count += 1
 	print("Fragments collected: %d" % fragment_count)
 	chime_player.play()
-	if fragment_count == 10:
-		door.unlock()
+	emit_signal("fragment_collected")
+	if get_tree().current_scene.name == "TutorialScene":
+		if fragment_count == 10:
+			door.unlock()
 
 func _on_Player_player_entered_hiding(hiding_spot: Area2D) -> void:
 	print("Player entered hiding spot")

@@ -9,6 +9,8 @@ extends CharacterBody2D
 @export var fall_threshold: float = 750.0  # Adjust this based on your scene
 @export var max_lives: int = 3
 
+signal fragment_collected
+
 var is_hiding: bool = false
 var hiding_spot: Area2D = null
 var is_jumping: bool = false
@@ -158,3 +160,8 @@ func die() -> void:
 
 func is_bouncing_on_head(enemy: Node) -> bool:
 	return velocity.y > 0 and global_position.y < enemy.global_position.y
+
+func collect_fragment() -> void:
+	emit_signal("fragment_collected")
+	#var ui_layer = get_parent().get_node("UILayer")
+	#ui_layer.add_fragment()
