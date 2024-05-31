@@ -16853,15 +16853,15 @@ layout_mode = 2
 texture = ExtResource("16_ggsb5")
 
 [node name="FragmentCounter" type="Label" parent="UILayer"]
-offset_left = 12.0
-offset_top = 8.0
-offset_right = 13.0
-offset_bottom = 31.0
+offset_left = 352.0
+offset_top = 16.0
+offset_right = 353.0
+offset_bottom = 39.0
 
 [node name="Timer" type="Label" parent="UILayer"]
-offset_left = 12.0
-offset_top = 8.0
-offset_right = 13.0
-offset_bottom = 31.0
+offset_left = 552.0
+offset_top = 24.0
+offset_right = 553.0
+offset_bottom = 47.0
 
 [editable path="GameManager/Door"]
